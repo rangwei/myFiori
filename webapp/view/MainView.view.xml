@@ -1,0 +1,30 @@
+<mvc:View controllerName="com.myorg.myFiori.controller.MainView" displayBlock="true" 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<List items="{order>/SalesOrderCollection}">
+						<!-- <StandardListItem type="Active" title="{order>SoId}" /> -->
+						<items>
+							<ObjectListItem title="{order>SoId}" type="Active" number="{
+								parts: [{path: 'order>GrossAmount'}, {path: 'order>CurrencyCode'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {
+									showMeasure: false
+								}
+							}" numberUnit="{order>CurrencyCode}">
+
+								<attributes>
+									<ObjectAttribute text="{order>BusinessPartner/CompanyName}" />
+
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View> 
